@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe Game</title>
+    <style>
+        /* Set up a modern, clean look */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .game-board {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            grid-gap: 10px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .cell {
+            width: 100px;
+            height: 100px;
+            font-size: 2em;
+            text-align: center;
+            cursor: pointer;
+            background-color: #f0f0f0;
+            border: 2px solid #ddd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            transition: background-color 0.3s, transform 0.2s ease;
+        }
+
+        .cell:hover {
+            background-color: #e0e0e0;
+            transform: scale(1.1);
+        }
+
+        .cell.x {
+            color: #FF6347; /* Tomato */
+        }
+
+        .cell.o {
+            color: #32CD32; /* LimeGreen */
+        }
+
+        .reset-button {
+            padding: 12px 30px;
+            font-size: 1.2em;
+            background-color: #008CBA;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 30px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .reset-button:hover {
+            background-color: #005f73;
+            transform: scale(1.1);
+        }
+
+        .result {
+            font-size: 1.5em;
+            margin-top: 20px;
+            text-align: center;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .result.win {
+            color: #32CD32;
+        }
+
+        .result.draw {
+            color: #FF6347;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Tic-Tac-Toe</h1>
+        <div class="game-board">
+            <div id="cell-0-0" class="cell"></div>
+            <div id="cell-0-1" class="cell"></div>
+            <div id="cell-0-2" class="cell"></div>
+            <div id="cell-1-0" class="cell"></div>
+            <div id="cell-1-1" class="cell"></div>
+            <div id="cell-1-2" class="cell"></div>
+            <div id="cell-2-0" class="cell"></div>
+            <div id="cell-2-1" class="cell"></div>
+            <div id="cell-2-2" class="cell"></div>
+        </div>
+        <div id="result"></div>
+        <button id="resetButton">Reset Game</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
