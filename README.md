@@ -126,6 +126,3 @@ This project is particularly suitable for beginners due to the following reasons
 - **Leaderboard:** Implement a system to track player scores.
 - **UI Enhancements:** Improve the game’s visual appeal.
 
----
-
-This draft should be comprehensive and beginner-friendly, while also providing detailed information suitable for a professional context. Let me know if there's anything else you need! 🎉
