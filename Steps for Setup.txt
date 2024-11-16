@@ -1,0 +1,77 @@
+Step 1: Frontend Setup
+1. Create an HTML File (index.html):
+   - Design the user interface for the Tic-Tac-Toe game.
+   - Add a 3x3 grid structure and buttons for user interaction.
+2. Create a JavaScript File (script.js):
+   - Write JavaScript code to handle user interactions, update the game board, and send/receive data from the backend.
+
+Step 2: Set IAM Permissions for Lambda
+1. Go to the IAM Service in AWS Management Console.
+2. Create or Update an IAM Role with the following policies:
+   - AmazonAPIGatewayInvokeFullAccess
+   - AWSLambdaBasicExecutionRole
+3. Attach the role to the Lambda function to ensure it has the necessary permissions.
+
+Step 3: Set Up AWS S3 Bucket
+1. Create an S3 Bucket:
+   - Open the S3 service and click on "Create Bucket."
+   - Provide a unique bucket name (e.g., `tic-tac-toe-game`).
+   - Select a region and uncheck "Block all public access."
+   - Acknowledge the public access settings and click "Create Bucket."
+2. Enable Public Access:
+   - Go to the bucket's "Permissions" tab.
+   - Under "Bucket Policy," add the following JSON policy to allow public read access:
+     Json format :
+     {
+         "Version": "2012-10-17",
+         "Statement": [
+             {
+                 "Effect": "Allow",
+                 "Principal": "*",
+                 "Action": "s3:GetObject",
+                 "Resource": "arn:aws:s3:::tic-tac-toe-game/*"
+             }
+         ]
+     }
+
+Step 4: Create Lambda Function
+1. Create a Lambda Function:
+   - Open the Lambda Service and click on "Create Function."
+   - Select "Author from Scratch," provide a function name (e.g., `TicTacToeFunction`), and choose Python 3.9 as the runtime.
+   - Assign the previously created IAM role to the Lambda function.
+   - Click "Create Function."
+2. Add Code to the Lambda Function:
+   - Use the provided Python code to handle game logic, including checking win/draw conditions and switching players.
+
+Step 5: Set Up API Gateway
+1. Create a REST API:
+   - Open the API Gateway Service and click on "Create API."
+   - Choose REST API and click "Build."
+   - Name the API (e.g., `TicTacToeAPI`).
+2. Add Resources and Methods:
+   - Create a resource `/game` in the API.
+   - Add a POST method to the resource and integrate it with the Lambda function created earlier.
+   - Add a GET method to the resource and integrate it with the Lambda function created earlier.
+   - Enable CORS for the method to allow cross-origin requests.
+3. Deploy the API:
+   - Create a deployment stage (e.g., `prod`) and deploy the API.
+   - Note down the API endpoint URL for use in the frontend.
+
+Step 6: Connect Frontend with Backend
+1. In the `script.js` file:
+   - Use the API Gateway URL to make POST requests for saving the game state and retrieving the game status.
+2. Update the frontend to handle responses from the backend and update the UI dynamically.
+
+Step 7: Test the Game
+1. Upload the HTML and JavaScript files to the S3 bucket.
+2. Use the S3 bucket's public URL to access the frontend.
+3. Play the game and ensure:
+   - The game state is updated correctly.
+   - API calls are successfully processed by the backend.
+   - The game handles win, draw, and ongoing states appropriately.
+
+Step 8: Debug and Enhance
+1. Test for edge cases in gameplay logic.
+2. Add UI/UX improvements, like animations or notifications.
+3. Monitor the API Gateway and Lambda logs for any issues.
+
